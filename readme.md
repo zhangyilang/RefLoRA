@@ -1,6 +1,7 @@
 # [NeurIPS 2025] RefLoRA
+[![arXiv](https://img.shields.io/badge/arXiv-2505.18877-b31b1b.svg)](https://arxiv.org/abs/2505.18877) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 
-This repository provides codes for reproducing the results in our NeurIPS 2025 paper [RefLoRA: Refactored Low-Rank Adaptation for Efficient Fine-Tuning of Large Models](https://arxiv.org/pdf/2505.18877). 
+This repository provides codes for reproducing the results in our NeurIPS 2025 paper [RefLoRA: Refactored Low-Rank Adaptation for Efficient Fine-Tuning of Large Models](https://arxiv.org/pdf/2505.18877) (to appear soon; preprint available on [arxiv](https://arxiv.org/pdf/2505.18877)). 
 
 ### Overview
 
