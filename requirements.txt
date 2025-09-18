@@ -12,3 +12,4 @@ tiktoken==0.9.0
 sentencepiece==0.2.0
 protobuf==5.29.3
 fire==0.7.0
+-e .
