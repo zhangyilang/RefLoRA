@@ -1,0 +1,14 @@
+torch==2.6.0
+torchvision==0.21.0
+torchaudio==2.6.0
+scipy==1.15.2
+scikit-learn==1.6.1
+peft==0.14.0
+transformers==4.49.0
+datasets==3.3.2
+evaluate==0.4.3
+accelerate==1.4.0
+tiktoken==0.9.0
+sentencepiece==0.2.0
+protobuf==5.29.3
+fire==0.7.0
