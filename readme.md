@@ -3,7 +3,7 @@
 
 This repository provides codes for reproducing the results in our NeurIPS 2025 paper [RefLoRA: Refactored Low-Rank Adaptation for Efficient Fine-Tuning of Large Models](https://arxiv.org/pdf/2505.18877) (to appear soon; preprint available on [arxiv](https://arxiv.org/pdf/2505.18877)). 
 
-# Overview
+### Overview
 
 This paper deals with the non-unique factorization challenge in low-rank adaptation (LoRA), which leads to inconsistent updates, unbalanced weights, and slow convergence. Specifically, for equivalent low-rank factorizations $\mathbf{A} \mathbf{B}^\top = \tilde{\mathbf{A}}\tilde{\mathbf{B}}^\top$, the resultant weight increment can differ remarkably; see analysis in our paper. 
 
@@ -19,9 +19,6 @@ With the optimal refactoring, RefLoRA guarantees consistent and balanced weight 
     <img src="assets/overhead.png" alt="overheads" height=350 />
 </p>
 
-
-
-# Experiments
 
 ### Setup
 
@@ -84,13 +81,13 @@ bash scripts/llama2_7B.sh
 bash scripts/llama3_8B.sh
 ```
 
-# Credits
+### Credits
 Our implementation builds upon the following repositories:
 
 - https://github.com/AGI-Edgerunners/LLM-Adapters
 - https://github.com/NVlabs/DoRA
 
-# Citation
+### Citation
 If you find this work useful, please consider citing:
 > Y. Zhang, B. Li, and G. B. Giannakis, “RefLoRA: Refactored Low-Rank Adaptation for Efficient Fine-Tuning of Large Models,” in *Proceedings of Advances in Neural Information Processing Systems*, 2025. 
 
