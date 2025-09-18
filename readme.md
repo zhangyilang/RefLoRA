@@ -8,14 +8,14 @@ This paper deals with the non-unique factorization challenge in low-rank adaptat
 
 **Key idea:** RefLoRA identifies the *optimal factorization* that minimizes the loss upper bound. We prove that this solution admits a closed-form solution. See the illustrative figure below:
 
-<img src="assets/upper_bounds.png" alt="upper bounds" width=600 />
+<img src="assets/upper_bounds.png" alt="upper bounds" width=400 />
 
 In doing so, RefLoRA guarantees faster convergence, and consistent weight updates.
 
 <p float="left">
-    <img src="assets/MF-loss.png" alt="matrix factorization" height=200 />
-    <img src="assets/loss-epoch.png" alt="glue" height=200 />
-    <img src="assets/overhead.png" alt="overheads" height=200 />
+    <img src="assets/MF-loss.png" alt="matrix factorization" height=300 />
+    <img src="assets/loss-epoch.png" alt="glue" height=300 />
+    <img src="assets/overhead.png" alt="overheads" height=400 />
 </p>
 
 
