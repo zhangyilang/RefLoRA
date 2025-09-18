@@ -57,6 +57,8 @@ refactorer = Refactorer(model, use_scalar=False, warmup_steps=100)
 trainer = RefTrainer(*args, **kwargs, refactorer=refactorer)
 ```
 
+Set `use_scalar=True` to use RefLoRA-S. 
+
 ### Natural language understanding
 
 ![GLUE](assets/tab-glue.png)
