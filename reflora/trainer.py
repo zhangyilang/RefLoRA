@@ -9,6 +9,6 @@ class RefTrainer(Trainer):
     def create_optimizer(self):
         optimizer = super().create_optimizer()
         if self.refactorer is not None:
-            self.refactorer.bump_into_optimizer(optimizer)
+            self.refactorer.integrate_into_optimizer(optimizer)
 
         return optimizer

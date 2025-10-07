@@ -136,7 +136,7 @@ class Refactorer:
         
         return lora_model
     
-    def bump_into_optimizer(self, optimizer) -> None:
+    def integrate_into_optimizer(self, optimizer) -> None:
         self.skip_steps = self.warmup_steps
 
         if self.use_scalar:

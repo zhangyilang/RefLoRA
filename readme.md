@@ -44,7 +44,7 @@ commonsense_reasoning/
 ```
 
 ### General usage
-RefLoRA integrates seamlessly with Hugging Face’s `Trainer` class via just three lines of modification, replacing `Trainer` with `RefTrainer`:
+RefLoRA combines seamlessly with Hugging Face’s `Trainer` class via just three lines of modification, replacing `Trainer` with `RefTrainer`. Set `use_scalar=True` to use RefLoRA-S. 
 ```python
 from reflora import Refactorer, RefTrainer
 
@@ -52,7 +52,16 @@ refactorer = Refactorer(model, use_scalar=False, warmup_steps=100)
 trainer = RefTrainer(*args, **kwargs, refactorer=refactorer)
 ```
 
-Set `use_scalar=True` to use RefLoRA-S. 
+Alternatively, it can be directly integrated into a `torch.optim.Optimizer` via
+
+```python
+from reflora import Refactorer
+
+refactorer = Refactorer(model, use_scalar=False, warmup_steps=100)
+refactorer.integrate_into_optimizer(optimizer)
+```
+
+
 
 ### Natural language understanding
 
