@@ -1,7 +1,7 @@
 # [NeurIPS 2025] RefLoRA
-[![arXiv](https://img.shields.io/badge/arXiv-2505.18877-b31b1b.svg)](https://arxiv.org/abs/2505.18877) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
+[![NeurIPS](https://img.shields.io/badge/NeurIPS-openreview-8c1b13)](https://arxiv.org/abs/2505.18877) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 
-This repository provides codes for reproducing the results in our NeurIPS 2025 paper [RefLoRA: Refactored Low-Rank Adaptation for Efficient Fine-Tuning of Large Models](https://openreview.net/forum?id=zefDc9oi5T) (to appear soon; preprint available on [arxiv](https://arxiv.org/pdf/2505.18877)). 
+This repository provides codes for reproducing the results in our NeurIPS 2025 paper [RefLoRA: Refactored Low-Rank Adaptation for Efficient Fine-Tuning of Large Models](https://openreview.net/pdf?id=zefDc9oi5T). 
 
 ## Overview
 
@@ -96,14 +96,15 @@ Our implementation builds upon the following repositories:
 
 ## Citation
 If you find this work useful, please consider citing:
-> Y. Zhang, B. Li, and G. B. Giannakis, “RefLoRA: Refactored Low-Rank Adaptation for Efficient Fine-Tuning of Large Models,” in *Proceedings of Advances in Neural Information Processing Systems*, 2025. 
+> Y. Zhang, B. Li, and G. B. Giannakis, “RefLoRA: Refactored Low-Rank Adaptation for Efficient Fine-Tuning of Large Models,” in *Proceedings of Advances in Neural Information Processing Systems (NeurIPS)*, 2025. 
 
 ```tex
 @inproceedings{RefLoRA, 
-  author={Zhang, Yilang and Li, Bingcong and Giannakis, Georgios B.}, 
-  title={RefLoRA: Refactored Low-Rank Adaptation for Efficient Fine-Tuning of Large Models}, 
-  booktitle={Advances in Neural Information Processing Systems}, 
-  year={2025}, 
-  url={https://openreview.net/forum?id=zefDc9oi5T},
+  title={RefLo{RA}: Refactored Low-Rank Adaptation for Efficient Fine-Tuning of Large Models},
+  author={Yilang Zhang and Bingcong Li and Georgios B. Giannakis},
+  booktitle={The Thirty-ninth Annual Conference on Neural Information Processing Systems},
+  year={2025},
+  url={https://openreview.net/forum?id=zefDc9oi5T}
 }
+
 ```
