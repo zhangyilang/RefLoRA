@@ -100,7 +100,7 @@ If you find this work useful, please consider citing:
 
 ```tex
 @inproceedings{RefLoRA, 
-  title={RefLo{RA}: Refactored Low-Rank Adaptation for Efficient Fine-Tuning of Large Models},
+  title={Ref{L}o{RA}: Refactored Low-Rank Adaptation for Efficient Fine-Tuning of Large Models},
   author={Yilang Zhang and Bingcong Li and Georgios B. Giannakis},
   booktitle={The Thirty-ninth Annual Conference on Neural Information Processing Systems},
   year={2025},
