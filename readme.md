@@ -2,7 +2,7 @@
 [![NeurIPS 2025](https://img.shields.io/badge/NeurIPS-2025-4b44ce.svg)](https://papers.nips.cc/paper_files/paper/2025/hash/85c1ee0b3cdf49b84f14b163b01f2711-Abstract-Conference.html)
 [![DOI](https://img.shields.io/badge/DOI-10.52202%2F085713--3106-blue.svg)](https://doi.org/10.52202/085713-3106)
 
-This repository provides codes for reproducing the results in our NeurIPS 2025 paper [RefLoRA: Refactored Low-Rank Adaptation for Efficient Fine-Tuning of Large Models](https://openreview.net/pdf?id=zefDc9oi5T). 
+This repository provides codes for reproducing the results in our NeurIPS 2025 paper [RefLoRA: Refactored Low-Rank Adaptation for Efficient Fine-Tuning of Large Models]([https://openreview.net/pdf?id=zefDc9oi5T](https://papers.nips.cc/paper_files/paper/2025/file/85c1ee0b3cdf49b84f14b163b01f2711-Paper-Conference.pdf)). 
 
 ## Overview
 
