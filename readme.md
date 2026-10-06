@@ -1,5 +1,6 @@
 # [NeurIPS 2025] RefLoRA
-[![NeurIPS](https://img.shields.io/badge/NeurIPS-openreview-8c1b13)](https://openreview.net/forum?id=zefDc9oi5T) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
+[![NeurIPS 2025](https://img.shields.io/badge/NeurIPS-2025-4b44ce.svg)](https://papers.nips.cc/paper_files/paper/2025/hash/85c1ee0b3cdf49b84f14b163b01f2711-Abstract-Conference.html)
+[![DOI](https://img.shields.io/badge/DOI-10.52202%2F085713--3106-blue.svg)](https://doi.org/10.52202/085713-3106)
 
 This repository provides codes for reproducing the results in our NeurIPS 2025 paper [RefLoRA: Refactored Low-Rank Adaptation for Efficient Fine-Tuning of Large Models](https://openreview.net/pdf?id=zefDc9oi5T). 
 
@@ -99,12 +100,14 @@ If you find this work useful, please consider citing:
 > Y. Zhang, B. Li, and G. B. Giannakis, “RefLoRA: Refactored Low-Rank Adaptation for Efficient Fine-Tuning of Large Models,” in *Proceedings of Advances in Neural Information Processing Systems (NeurIPS)*, 2025. 
 
 ```tex
-@inproceedings{RefLoRA, 
-  title={Ref{L}o{RA}: Refactored Low-Rank Adaptation for Efficient Fine-Tuning of Large Models},
-  author={Yilang Zhang and Bingcong Li and Georgios B. Giannakis},
-  booktitle={The Thirty-ninth Annual Conference on Neural Information Processing Systems},
-  year={2025},
-  url={https://openreview.net/forum?id=zefDc9oi5T}
+@inproceedings{RefLoRA,
+ title = {RefLoRA: Refactored Low-Rank Adaptation for Efficient Fine-Tuning of Large Models},
+ author = {Zhang, Yilang and Li, Bingcong and Giannakis, Georgios},
+ booktitle = {Advances in Neural Information Processing Systems},
+ doi = {10.52202/085713-3106},
+ pages = {92847--92878},
+ volume = {38},
+ year = {2025}
 }
 
 ```
