@@ -18,7 +18,7 @@ With the optimal refactoring, RefLoRA guarantees consistent and balanced weight 
     <img src="assets/overhead.png" alt="overheads" height=350 />
 </p>
 
-**New implementation.** RefLoRA and RefLoRA-S now fine-tune **as fast as LoRA** (98.5–99.6% of its throughput) with the same peak GPU memory. Unlike the implementation in our paper (figures above), which refactors the LoRA layers one by one, the new implementation batches the refactoring of all layers (`batched=True`), with the same results up to floating-point round-off.
+**New implementation.** RefLoRA and RefLoRA-S now fine-tune *as fast as LoRA* (98.5–99.6% of its throughput) with the same peak GPU memory. Unlike the implementation in our paper (figures above), which refactors the LoRA layers one by one, the new implementation batches the refactoring of all layers (`batched=True`), with the same results up to floating-point round-off.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/throughput-dark.png">
