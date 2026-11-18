@@ -18,13 +18,30 @@ With the optimal refactoring, RefLoRA guarantees consistent and balanced weight 
     <img src="assets/overhead.png" alt="overheads" height=350 />
 </p>
 
+**New implementation.** RefLoRA and RefLoRA-S now fine-tune **as fast as LoRA** (98.5–99.6% of its throughput) with the same peak GPU memory. Unlike the implementation in our paper (figures above), which refactors the LoRA layers one by one, the new implementation batches the refactoring of all layers (`batched=True`), with the same results up to floating-point round-off.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/throughput-dark.png">
+  <img src="assets/throughput-light.png" alt="Fine-tuning throughput relative to LoRA on one H100 GPU, layer-by-layer vs. batched refactoring. DeBERTaV3-base (r=8): RefLoRA 73% vs. 98%; RefLoRA-S 92% vs. 100%. LLaMA3-8B (r=32): RefLoRA 58% vs. 99%; RefLoRA-S 93% vs. 99%." width="720">
+</picture>
+
+
 ## Experiments
 ### Setup
 
-Our codes are tested with python 3.12, and packages speficied in `requirements.txt`, where our RefLoRA package is installed in the editable mode. 
+Our codes are tested with python 3.12. Install the RefLoRA package in editable mode, together with the dependencies of the experiments:
 
 ```bash
-pip install -r requirements.txt
+pip install -e ".[experiments]"
+```
+
+Use `pip install -e ".[paper]"` instead to reproduce the exact package versions of the paper. The core package alone (`pip install -e .`) only depends on `torch`, `peft`, and `transformers`.
+
+To run the tests (CPU is enough), which also check that the implementation matches the one used in the paper:
+
+```bash
+pip install -e ".[test]"
+pytest
 ```
 
 Next, download the commonsense reasoning datasets from [LLM-Adapters](https://github.com/AGI-Edgerunners/LLM-Adapters), and prepare them as
@@ -62,23 +79,44 @@ refactorer = Refactorer(model, use_scalar=False, warmup_steps=100)
 refactorer.integrate_into_optimizer(optimizer)
 ```
 
+#### Arguments of `Refactorer`
 
+| Argument | Default | Description |
+| --- | --- | --- |
+| `model` | — | A `PeftModel`/`LoraModel`, or any module containing PEFT LoRA layers. |
+| `warmup_steps` | `0` | Number of optimizer steps run as vanilla LoRA before refactoring starts. |
+| `re_init` | `False` | Randomly re-initialize both LoRA factors and subtract their product from the frozen pre-trained weight, so that the model is unchanged but both factors are full rank. |
+| `interval` | `1` | Refactor every `interval` optimizer steps after warmup. |
+| `use_scalar` | `False` | Use the lightweight RefLoRA-S. |
+| `batched` | `True` | Batch the refactoring of all layers (`True`) or refactor them layer by layer (`False`); the former is much faster on GPUs. |
+
+> [!NOTE]
+> RefLoRA assumes full-rank LoRA factors (Assumption 1), whereas PEFT initializes `lora_B = 0` by default. Use `warmup_steps > 0` (e.g., 100 as in our scripts) or `re_init=True`. Otherwise, layers with a zero factor fall back to vanilla LoRA until both factors become nonzero.
+
+#### Supported features
+
+- **LoRA layers:** Linear (including 8-bit/4-bit quantized base layers) and Embedding. Convolutional LoRA layers are not supported.
+- **Optimizers:** RefLoRA preconditions the gradients, and thus works with any `torch.optim.Optimizer`. RefLoRA-S refactors the weights and rescales the optimizer moments accordingly, which supports Adam/AdamW (including AMSGrad) and SGD.
+- **Precision:** fp32, bf16, and fp16 LoRA weights; the $r \times r$ computations always run in at least fp32.
+- **Training:** single-GPU and DDP training (as in our scripts). `RefTrainer` keeps the refactoring schedule when resuming from a checkpoint. FSDP and DeepSpeed are not supported.
 
 ### Natural language understanding
 
 ![GLUE](assets/tab-glue.png)
 
 
-The following commands are used to reproduce the results for the GLUE benchmark. Hyperparameters are offered in Table 6 of Appendix D.6. 
+The following commands are used to reproduce the results for the GLUE benchmark. Hyperparameters are offered in Table 7 of Appendix D.6. 
 
 ```bash
-cd glue
+cd NLU
 bash debertaV3-base.sh
 ```
 
+The script contains the setup for CoLA, while for other tasks, set `TASK_NAME` and the hyperparameters (learning rate, epochs, warmup steps, max sequence length, classifier dropout, and weight decay) according to Table 7. Use `--use_scalar True` for RefLoRA-S.
+
 ### Commonsense reasoning
 
-![GLUE](assets/tab-common.png)
+![Commonsense reasoning](assets/tab-common.png)
 
 To reproduce results on commonsense reasoning datasets:
 
@@ -88,6 +126,8 @@ bash scripts/llama_7B.sh
 bash scripts/llama2_7B.sh
 bash scripts/llama3_8B.sh
 ```
+
+Each script fine-tunes the model with RefLoRA and then evaluates it on all 8 datasets. Add `--use_scalar` to the fine-tuning command for RefLoRA-S.
 
 ## Credits
 Our implementation builds upon the following repositories:

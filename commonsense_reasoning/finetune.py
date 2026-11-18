@@ -46,6 +46,7 @@ def train(
         use_scalar=False,
         reflora_warmup=0,
         reflora_interval=1,
+        reflora_batched=True,
         # prefix tuning hyperparams
         num_virtual_tokens: int = 30,
         # llm hyperparams
@@ -78,6 +79,7 @@ def train(
         f"use_scalar: {use_scalar}\n"
         f"reflora_warmup: {reflora_warmup}\n"
         f"reflora_interval: {reflora_interval}\n"
+        f"reflora_batched: {reflora_batched}\n"
         f"train_on_inputs: {train_on_inputs}\n"
         f"adapter_name: {adapter_name}\n"
         f"group_by_length: {group_by_length}\n"
@@ -255,6 +257,7 @@ def train(
                                 use_scalar=use_scalar,
                                 warmup_steps=reflora_warmup,
                                 interval=reflora_interval,
+                                batched=reflora_batched,
                                 re_init=config.init_lora_weights is True and reflora_warmup  == 0)
     else:
         refactorer = None

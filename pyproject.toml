@@ -1,0 +1,67 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "reflora"
+version = "0.2.0"
+description = "RefLoRA: Refactored Low-Rank Adaptation for Efficient Fine-Tuning of Large Models"
+readme = "readme.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Yilang Zhang", email = "zhan7453@umn.edu" }]
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "torch>=2.0",
+    "peft>=0.14",
+    "transformers>=4.49",
+]
+
+[project.optional-dependencies]
+# extra packages for the GLUE and commonsense reasoning experiments
+experiments = [
+    "accelerate",
+    "datasets",
+    "evaluate",
+    "fire",
+    "protobuf",
+    "scikit-learn",
+    "scipy",
+    "sentencepiece",
+    "tiktoken",
+]
+# exact versions used in the paper
+paper = [
+    "torch==2.6.0",
+    "peft==0.14.0",
+    "transformers==4.49.0",
+    "accelerate==1.4.0",
+    "datasets==3.3.2",
+    "evaluate==0.4.3",
+    "fire==0.7.0",
+    "protobuf==5.29.3",
+    "scikit-learn==1.6.1",
+    "scipy==1.15.2",
+    "sentencepiece==0.2.0",
+    "tiktoken==0.9.0",
+]
+
+test = [
+    "accelerate",
+    "pytest",
+]
+
+[project.urls]
+Homepage = "https://github.com/zhangyilang/RefLoRA"
+Paper = "https://papers.nips.cc/paper_files/paper/2025/hash/85c1ee0b3cdf49b84f14b163b01f2711-Abstract-Conference.html"
+
+[tool.setuptools.packages.find]
+include = ["reflora*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

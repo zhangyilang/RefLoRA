@@ -559,6 +559,7 @@ def main():
                                 use_scalar=peft_args.use_scalar, 
                                 warmup_steps=peft_args.reflora_warmup,
                                 interval=peft_args.reflora_interval,
+                                batched=peft_args.reflora_batched,
                                 re_init=peft_args.init_lora_weights is True and peft_args.reflora_warmup  == 0)
     else:
         refactorer = None

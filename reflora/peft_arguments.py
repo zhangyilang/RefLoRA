@@ -50,3 +50,9 @@ class PEFTArguments:
     use_scalar: Optional[bool] = field(default=False, metadata={"help": "Whether to use RefLoRA-S or not"})
     reflora_warmup: Optional[int] = field(default=100, metadata={"help": "Number of warmup steps for RefLoRA"})
     reflora_interval: Optional[int] = field(default=1, metadata={"help": "Interval of Refactoring; default to 1."})
+    reflora_batched: Optional[bool] = field(default=True, metadata={"help": "Batch the refactoring across layers for faster training"})
+
+    def __post_init__(self):
+        # `--init_lora_weights True/False` is parsed as a string, which PEFT rejects
+        if isinstance(self.init_lora_weights, str) and self.init_lora_weights.lower() in ("true", "false"):
+            self.init_lora_weights = self.init_lora_weights.lower() == "true"
