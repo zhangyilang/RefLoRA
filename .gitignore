@@ -182,3 +182,5 @@ cython_debug/
 
 # macOS
 .DS_Store
+# Local benchmarks
+benchmarks/
